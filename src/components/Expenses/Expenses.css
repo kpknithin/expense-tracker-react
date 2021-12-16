@@ -7,3 +7,18 @@
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
+
+.btn-edit{
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #3f0b46;
+  border: 1px solid white;
+  padding: 0.5rem;
+  border-radius: 12px;
+
+
+  padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
