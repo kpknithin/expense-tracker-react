@@ -14,7 +14,7 @@ const expense = [
     amount: 500.0,
   },
 ];
-function App() {
+const App = () => {
   return (
     <div>
       <Expenses items={expense} />
