@@ -15,7 +15,7 @@ function ExpenseForm() {
     // setTitle(event.target.value);
   };
 
-  console.log("Title: " + updateUserInput);
+  // console.log("Title: " + updateUserInput);
   const amountChangeHandler = (event) => {
     expenseData.amount = event.target.value;
     updateUserInput({ ...expenseData });
@@ -26,9 +26,11 @@ function ExpenseForm() {
     updateUserInput({ ...expenseData });
     // setDate(event.target.value);
   };
-  console.log("Date: " + updateUserInput);
+  // console.log("Date: " + updateUserInput);
   const submitHandler = (event) => {
-    console.log(event);
+    expenseData.date = new Date(expenseData.date);
+    console.log(expenseData);
+    updateUserInput({ title: "", amount: "", date: "" });
     event.preventDefault();
   };
 
