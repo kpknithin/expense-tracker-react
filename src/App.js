@@ -1,3 +1,4 @@
+import { useState } from "react/cjs/react.development";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense/NewExpense";
 const expense = [
@@ -16,12 +17,20 @@ const expense = [
   },
 ];
 const App = () => {
+ // const [prevExpense, updateExpense] = useState(expense);
+ // console.log("Previous Value: "+ JSON.stringify(prevExpense));
+
+  const addExpenseHandler = (newExpenseData) => {
+    console.log("Expense list updated!!!");
+    expense.push(newExpenseData);
+   // updateExpense(...expense);
+  };
   return (
     <div>
-      <NewExpense />
-      <Expenses items={expense} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expense} onExpense/>
     </div>
   );
-}
+};
 
 export default App;
