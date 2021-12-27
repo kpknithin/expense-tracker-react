@@ -18,7 +18,6 @@ const INITIAL_EXPENSE = [
 ];
 const App = () => {
   const [expense, updateExpense] = useState(INITIAL_EXPENSE);
-  // console.log("Previous Value: "+ JSON.stringify(prevExpense));
 
   const addExpenseHandler = (newExpenseData) => {
     console.log("Expense list updated!!!");
@@ -27,7 +26,7 @@ const App = () => {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expense} filteredYear={new Date().getFullYear()} onExpense />
+      <Expenses items={expense} filteredYear={new Date().getFullYear().toString()} onExpense />
     </div>
   );
 };
