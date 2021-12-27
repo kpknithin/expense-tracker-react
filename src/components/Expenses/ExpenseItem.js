@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const ExpenseItem = (props) => {
   const [amount, setTitle] = useState(props.amount);
-  console.log("Compent Evaluating");
+  // console.log("Compent Evaluating");
   const clickHandler = () => {
     console.log("onlick : " + amount);
     

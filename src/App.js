@@ -1,7 +1,7 @@
 import { useState } from "react/cjs/react.development";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense/NewExpense";
-const expense = [
+const INITIAL_EXPENSE = [
   {
     id: "e1",
     date: new Date(),
@@ -17,13 +17,12 @@ const expense = [
   },
 ];
 const App = () => {
-  const [prevExpense, updateExpense] = useState(expense);
+  const [expense, updateExpense] = useState(INITIAL_EXPENSE);
   // console.log("Previous Value: "+ JSON.stringify(prevExpense));
 
   const addExpenseHandler = (newExpenseData) => {
     console.log("Expense list updated!!!");
-    expense.push(newExpenseData);
-    updateExpense(() => [...prevExpense, newExpenseData]);
+    updateExpense(() => [newExpenseData, ...expense]);
   };
   return (
     <div>
