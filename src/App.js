@@ -17,18 +17,18 @@ const expense = [
   },
 ];
 const App = () => {
- // const [prevExpense, updateExpense] = useState(expense);
- // console.log("Previous Value: "+ JSON.stringify(prevExpense));
+  const [prevExpense, updateExpense] = useState(expense);
+  // console.log("Previous Value: "+ JSON.stringify(prevExpense));
 
   const addExpenseHandler = (newExpenseData) => {
     console.log("Expense list updated!!!");
     expense.push(newExpenseData);
-   // updateExpense(...expense);
+    updateExpense(() => [...prevExpense, newExpenseData]);
   };
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expense} onExpense/>
+      <Expenses items={expense} onExpense />
     </div>
   );
 };
