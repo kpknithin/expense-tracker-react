@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expense} onExpense />
+      <Expenses items={expense} filteredYear={new Date().getFullYear()} onExpense />
     </div>
   );
 };
