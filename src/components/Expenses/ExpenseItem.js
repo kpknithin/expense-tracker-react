@@ -4,14 +4,14 @@ import Card from "../UI/Card";
 import { useState } from "react";
 
 const ExpenseItem = (props) => {
-  const [amount, setTitle] = useState(props.amount);
+  const [amount, setAmount] = useState(props.amount);
   // console.log("Compent Evaluating");
   const clickHandler = () => {
     console.log("onlick : " + amount);
 
     //  setInterval(() => {
     console.log("Interval triggered");
-    setTitle(amount + 1.0);
+    setAmount(amount + 1.0);
     //  }, 4000);
   };
 
