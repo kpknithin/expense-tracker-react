@@ -17,7 +17,7 @@ function ExpenseForm(props) {
 
   // console.log("Title: " + updateUserInput);
   const amountChangeHandler = (event) => {
-    expenseData.amount = event.target.value;
+    expenseData.amount = +event.target.value;
     updateUserInput({ ...expenseData });
     // setAmount(event.target.value);
   };
@@ -67,6 +67,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
