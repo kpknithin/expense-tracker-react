@@ -4,11 +4,7 @@ function ExpenseForm(props) {
   // const [titleVal, setTitle] = useState("");
   // const [amountVal, setAmount] = useState("");
   // const [dateVal, setDate] = useState("");
-  const [expenseData, updateUserInput] = useState({
-    title: "",
-    amount: "",
-    date: "",
-  });
+  const [expenseData, updateUserInput] = useState(props.expenseData);
   const titleChangeHandler = (event) => {
     expenseData.title = event.target.value;
     updateUserInput({ ...expenseData });
@@ -33,7 +29,11 @@ function ExpenseForm(props) {
     props.onSaveExpenseData(expenseData);
     event.preventDefault();
   };
-
+  const date = expenseData.date;
+  var day = ("0" + date.getDate()).slice(-2);
+  var month = ("0" + (date.getMonth() + 1)).slice(-2);
+  
+  var dateVal = date.getFullYear()+"-"+(month)+"-"+(day) ;
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -59,9 +59,9 @@ function ExpenseForm(props) {
           <label>Date</label>
           <input
             type="date"
-            value={expenseData.date}
+            value={dateVal}
             min="2019-10-10"
-            max="2021-12-31"
+            max="2022-12-31"
             onChange={dateChangeHandler}
           />
         </div>

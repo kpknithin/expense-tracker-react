@@ -1,38 +1,50 @@
-import { useState } from "react/cjs/react.development";
 import ExpenseForm from "./ExpenseForm";
-
+const emptyFormObj = {
+  title: "",
+  amount: "",
+  date: "",
+};
 function NewExpense(props) {
-  const [isEditing, setIsEditing] = useState(false);
   const saveExpenseDataHaldler = (enteredExpenseData) => {
-    // Construct the latest ID
-    const newExpenseId = new Date().getTime();
-    const newExpenseData = {
-      ...enteredExpenseData,
-      id: "e" + newExpenseId,
-    };
+    if (enteredExpenseData.id === undefined) {
+      // Construct the latest ID
+      const newExpenseId = new Date().getTime();
+      const newExpenseData = {
+        ...enteredExpenseData,
+        id: "e" + newExpenseId,
+      };
+      // Adding new Expense into existing object
+      props.onAddExpense(newExpenseData);
+    }else{
+      props.onAddExpense(enteredExpenseData);
+    }
 
-    // Adding new Expense into existing object
-    props.onAddExpense(newExpenseData);
-    setIsEditing(false);
+    props.onEditExpense(undefined);
   };
 
   const startEditingHandler = (event) => {
-    setIsEditing(true);
+    props.onEditExpense({ ...emptyFormObj });
+    // Init with Null data to empty all the input values
   };
   const stopEditingHandler = (event) => {
-    setIsEditing(false);
-  
+    props.onEditExpense(undefined);
   };
-
+  let expenseData = props.expenseData;
+  if (props.isEditing && expenseData === undefined) {
+    expenseData = emptyFormObj;
+  }
   return (
     <div className="new-expense">
-      {isEditing ? (
+      {props.isEditing ? (
         <ExpenseForm
+          expenseData={expenseData}
           onSaveExpenseData={saveExpenseDataHaldler}
           onCancel={stopEditingHandler}
         />
       ) : (
-        <button type="button" onClick={startEditingHandler}>Add New Expense</button>
+        <button type="button" onClick={startEditingHandler}>
+          Add New Expense
+        </button>
       )}
     </div>
   );

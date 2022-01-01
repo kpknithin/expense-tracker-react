@@ -13,10 +13,14 @@ const Expenses = (props) => {
   );
 
   const filterChangeHandler = (selectedYear) => {
+    // child to parent "Lifiting state up or Two way binding"
     console.log("Filtered Expenses with Date: " + selectedYear);
     setFilteredYear(selectedYear);
   };
 
+  const onEditHandler = (id) => {
+    props.onEditHandler(id);
+  }
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -24,7 +28,7 @@ const Expenses = (props) => {
         onFilterExpenses={filterChangeHandler}
       />
       <ExpensesChart expenses={filteredExpeses} />
-      <ExpenseList items={filteredExpeses} />
+      <ExpenseList items={filteredExpeses} onEditHandler={onEditHandler} />
     </Card>
   );
 };
